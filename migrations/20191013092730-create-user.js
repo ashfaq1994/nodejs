@@ -1,18 +1,29 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Employees', {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      email: {
         type: Sequelize.STRING
       },
-      designation: {
-         type:Sequelize.STRING
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
+        type: Sequelize.STRING
+      },
+      companyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {         // User belongsTo Company 1:1
+          model: 'Companies',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -21,19 +32,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      companyId :{
-        type:Sequelize.INTEGER,
-        onDelete : 'CASCADE',
-         reference : {
-           model : 'companies',
-           ket : 'id',
-           as : 'companyId'
-         }
-      },
+      }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Employees');
+    return queryInterface.dropTable('Users');
   }
 };
