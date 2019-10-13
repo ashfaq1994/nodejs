@@ -1,9 +1,12 @@
-
-exports.createUser = (req,res) => {
-    res.status(200)
-    .json({
-        data : req.body,
-    });
+// const Company = require('../models/company');
+exports.createUser = async (req,res) => {
+    // const data = await Company.create({
+    //     name : req.body.name,
+    // })
+    // res.status(200)
+    // .json({
+    //     data :data,
+    // });
     console.log(req.body);  
     
     // res.redirect('/');
