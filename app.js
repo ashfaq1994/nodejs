@@ -16,6 +16,11 @@ models.sequelize.sync().then(function(){
      console.log(error +'Error');
 })
 
+// when a random route is inputed
+app.get('*', (req, res) => res.status(200).send({
+  message: 'Welcome to this API.'
+}));
+
 app.use('/',userRoute);
 
 
