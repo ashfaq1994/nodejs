@@ -4,10 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Employee.associate = function(models) {
-   Employee.belongsTo(model.Company,{
-     foreignKey : 'CompanyId',
-     onDelete : 'CASCADE',
-   })
+  //  Employee.belongsTo(models.Company,{
+  //    foreignKey : 'CompanyId',
+  //    onDelete : 'CASCADE',
+  //  })
   };
   return Employee;
 };
