@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     User.belongsTo(models.Company, {foreignKey: 'companyId', as: 'company'})
+    User.belongsToMany(models.WorkingDay, {through: 'UsersWorkingDays', foreignKey: 'userId', as: 'days'})
   };
   return User;
 };
