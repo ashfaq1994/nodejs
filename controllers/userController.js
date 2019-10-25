@@ -1,15 +1,43 @@
 const User = require('../models').User;
 const WorkingDay = require('../models').WorkingDay;
+const Company = require('../models').Company;
 exports.createUser = (req, res) => {
-  const reqUser = { ...req.body }
+  // Company.create({
+  //   name: 'hello world',
+  //   User: {
+  //     firstName : 'Name wfdsf',
+  //   }
+  // }, {
+  //   include: User
+  // }).then(response => {
+  //   res.json({ data: response })
+  // }).catch(error => {
+  //   res.json({ data: error })
+  // });
+
+  // return Company.create({
+  //   name: 'Chair',
+  //   User: [{
+  //     firstName: 'Matt',
+  //     lastName: 'Hansen'
+  //   }]
+  // }, {
+  //   include: [{
+  //     association: User,
+  //   }]
+  // }).then(response => {
+  //     res.json({ data: response })
+  //   }).catch(error => {
+  //     res.json({ data: error })
+  //   });
   
-  User.create(
-    // firstName: req.body.firstName,
-    // lastName: req.body.lastName,
-    // email: req.body.email,
-    // companyId: req.body.companyId
-    reqUser
-  ).then(response => {
+  return Company.create({
+    name: 'Chair',
+    users : [
+      { firstName: 'Alpha'},
+      { lastName: 'Beta'}
+    ]
+  }).then(response => {
     res.json({ data: response })
   }).catch(error => {
     res.json({ data: error })

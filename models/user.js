@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     companyId: DataTypes.INTEGER
   }, {});
   User.associate = function(models) {
-    User.belongsTo(models.Company, {foreignKey: 'companyId', as: 'company'})
+    User.belongsTo(models.Company)
     User.belongsToMany(models.WorkingDay, {through: 'UsersWorkingDays', foreignKey: 'userId', as: 'days'})
   };
   return User;
