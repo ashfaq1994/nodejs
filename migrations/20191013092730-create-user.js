@@ -19,7 +19,7 @@ module.exports = {
       },
       companyId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {         // User belongsTo Company 1:1
           model: 'Companies',
           key: 'id'
