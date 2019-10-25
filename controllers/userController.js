@@ -31,17 +31,7 @@ exports.createUser = (req, res) => {
   //     res.json({ data: error })
   //   });
   
-  return Company.create({
-    name: 'Chair',
-    users : [
-      { firstName: 'Alpha'},
-      { lastName: 'Beta'}
-    ]
-  }).then(response => {
-    res.json({ data: response })
-  }).catch(error => {
-    res.json({ data: error })
-  });
+
 
 };
 
