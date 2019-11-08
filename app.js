@@ -9,17 +9,17 @@ app.use(express.urlencoded());
 app.set('view engine', 'ejs');
 app.set('views','public');
 
-models.sequelize.sync().then(function(){
-  console.log('Nice Database connected');
+// models.sequelize.sync().then(function(){
+//   console.log('Nice Database connected');
   app.listen(port, () => console.log('server started nodejs'));
-}).catch((error) => {
-     console.log(error +'Error');
-})
+// }).catch((error) => {
+//      console.log(error +'Error');
+// })
 
 // when a random route is inputed
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to this API.'
-}));
+// app.get('*', (req, res) => res.status(200).send({
+//   message: 'Welcome to this API.'
+// }));
 
 app.use('/',userRoute);
 
