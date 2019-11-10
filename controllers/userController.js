@@ -1,6 +1,12 @@
 const models = require('../models');
 const {Company, User, Product } = require('../models');
 
+exports.index = (req,res,next) => {
+    res.render('index', {
+      pageTitle : 'Home Page'
+    });   
+};
+
 exports.createUser = async (req, res) => {
   
   try {
@@ -12,9 +18,9 @@ exports.createUser = async (req, res) => {
          lastName : 'New first NAme',
        }],
       product: [{
-         title : 'tricksfree',
+         title : 'tricksfree@gmail.com',
          decription : 'New first NAme',
-         model : 'New first NAme',
+         model : 2345,
       }
       ]
     }, {
@@ -52,23 +58,28 @@ exports.getUser =  async (req, res) => {
     }
     ]
   });
-  res.status(200)
-    .json({
-      data: data,
-      links: {
-        first: req.protocol + '://' + req.get('host') + req.originalUrl + '?page=1',
-        last: req.protocol + '://' + req.get('host') + req.originalUrl + '?page=1',
-      },
-      meta: {
-        current_page: 1,
-        from: 1,
-        last_page: 1,
-        path: req.protocol + '://' + req.get('host') + req.originalUrl,
-        per_page: 10,
-        to: data.length,
-        total: data.length,
-      }
-    });
+
+  res.render('index', {
+    pageTitle : 'Home Page',
+    data : data
+  });  
+  // res.status(200)
+  //   .json({
+  //     data: data,
+  //     links: {
+  //       first: req.protocol + '://' + req.get('host') + req.originalUrl + '?page=1',
+  //       last: req.protocol + '://' + req.get('host') + req.originalUrl + '?page=1',
+  //     },
+  //     meta: {
+  //       current_page: 1,
+  //       from: 1,
+  //       last_page: 1,
+  //       path: req.protocol + '://' + req.get('host') + req.originalUrl,
+  //       per_page: 10,
+  //       to: data.length,
+  //       total: data.length,
+  //     }
+  //   });
 
     // res.render('index', { pageTitle : 'New Page Title developer'});
     // console.log(req.body);   
