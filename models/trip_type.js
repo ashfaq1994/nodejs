@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Trip_Type.associate = function(models) {
-    Trip_Type.hasOne(models.Trip,{foreignKey: 'trip_type_id',as: 'trip'})
+    Trip_Type.hasOne(models.Trip,{foreignKey: 'trip_type_id',as: 'trip_type'})
   };
   return Trip_Type;
 };

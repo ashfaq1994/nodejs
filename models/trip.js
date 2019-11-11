@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Trip.hasMany(models.Excludes,{foreignKey: 'trip_id',as: 'excludes'})
     Trip.hasMany(models.Includes,{foreignKey: 'trip_id',as: 'includes'})
-    Trip.belongsTo(models.Trip_Type, {foreignKey: 'trip_id'})
+    Trip.belongsTo(models.Trip_Type, {foreignKey: 'trip_type_id'})
     Trip.belongsTo(models.Destination, {foreignKey: 'destination_id'})
 
   };

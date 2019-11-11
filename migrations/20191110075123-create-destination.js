@@ -15,6 +15,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+
+      slug: {
+        type: Sequelize.STRING
+      },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

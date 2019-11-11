@@ -1,10 +1,15 @@
 const models = require('../models');
 const slugify = require('slugify')
+
+
+
 exports.index = (req,res,next) => {
     res.render('create', {
       pageTitle : 'Home Page'
     });   
 };
+
+
 exports.store = async  (req,res,next) => {
     try {   
     const newTrip = await models.Trip.create({
@@ -63,7 +68,8 @@ exports.store = async  (req,res,next) => {
 exports.newDestination = async (req,res,next) => {
   try{
     const newDestinations = await models.Destination.create({
-           name : 'New Bangalore'          
+      name: 'New Bangalore',
+      slug: slugify('Bangalore').toLowerCase(),
     });
     res.status(201)
         .json({ data:  newDestinations  });
@@ -86,15 +92,30 @@ exports.destinationIndex = async (req,res,next) =>
 
 exports.destinationOne = async (req,res,next) =>
 {
-      const allDestination = await models.Destination.findAll({
-        include: [{
-          model: models.Trip,
-          as : 'trip',
-        }
-        ]
-      });
-      res.status(200)
-          .json({ data : allDestination  });
+  // console.log(req.params.slug);
+  
+  try
+  {
+    const allDestination = await models.Destination.findOne(
+      {
+        where: {
+          slug: req.params.slug,
+        },
+      include: [{
+        model: models.Trip,
+        as : 'trip'
+      }
+      ]
+    })
+  
+    res.status(200)
+    .json({ data : allDestination });
+  }
+  catch (error)
+  {
+    res.status(400)
+    .json({ data : error });
+  }
 }
 // npx sequelize-cli model:generate --name Includes --attributes  check:boolean,name:string,trip_id:integer
 // npx sequelize-cli model:generate --name Includes --attributes  check:boolean,name:string,trip_id:integer

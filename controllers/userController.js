@@ -3,7 +3,8 @@ const {Company, User, Product } = require('../models');
 
 exports.index = (req,res,next) => {
     res.render('index', {
-      pageTitle : 'Home Page'
+      pageTitle: 'Home Page',
+      trip: 'new trip'
     });   
 };
 
@@ -51,18 +52,23 @@ exports.createUser = async (req, res) => {
 };
 
 
-exports.getUser =  async (req, res) => {
-  const data = await models.Product.findAll({
+exports.getUser = async (req, res) => {
+  const data = await models.Company.findAll({
     include: [{
-      model: models.Company,
+      model: models.Product,
+      as : 'product'
+    },
+    {
+      model: models.User,
+      as : 'user'
     }
     ]
   });
 
-  res.render('index', {
-    pageTitle : 'Home Page',
-    data : data
-  });  
+  res.status(200)
+  .json({
+    data: data
+  }); 
 
 
   // const transaction = await models.sequelize.transaction();

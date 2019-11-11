@@ -10,11 +10,11 @@ router.
 
 router.
      route('/destination')
-     .get(tripController.destinationOne)
+     // .get(tripController.destinationOne)
      .post(tripController.newDestination)
 
-// router
-//      .route('destination/:id')
-//      .get(tripController.destinationOne)
+router
+     .route('/destination/:slug')
+     .get(tripController.destinationOne)
 
      module.exports = router;

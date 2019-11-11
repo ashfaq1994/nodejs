@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.
      route('/')
-     .get(userController.getUser)
+     .get(userController.index)
      .post(userController.createUser);
 
 // router
