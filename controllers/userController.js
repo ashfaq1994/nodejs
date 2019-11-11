@@ -63,6 +63,48 @@ exports.getUser =  async (req, res) => {
     pageTitle : 'Home Page',
     data : data
   });  
+
+
+  // const transaction = await models.sequelize.transaction();
+  //     try {
+  //       let employee = await Company.create({name : 'name'}, {
+  //         transaction
+  //       });
+  //       let user_role_obj = [
+  //         {
+  //           companyId : employee.id,
+  //           email : 'hackc@gmail.com',
+  //           firstName : 'New dudsj',
+  //           lastName : 'new devloeprs',
+  //         },
+  //         {
+  //           companyId : employee.id,
+  //           email : 'hackc@gmail.com',
+  //           firstName : 'New dudsj',
+  //           lastName : 'new devloeprs',
+  //         },
+  //       ];
+  //       let user_role = await User.bulkCreate(user_role_obj, {
+  //         transaction
+  //       });
+  //       let department = await Department.create({
+  //         name: 'New department', 
+  //         companyId : employee.id,
+  //        }, {
+  //         transaction
+  //       });
+  //       await transaction.commit();
+  //       if (employee) {
+  //         res.json({
+  //           success: 1,
+  //           data: {employee,user_role,department}
+  //           // message: messagesList.addEmployee.success
+  //         });
+  //       }
+  //     } catch (ex) {
+  //       await transaction.rollback();
+  //       res.json({error : { success: 0, message: ex.message }});
+  //     }
   // res.status(200)
   //   .json({
   //     data: data,

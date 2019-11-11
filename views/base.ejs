@@ -1,0 +1,17 @@
+<%- include('layouts/header') -%>
+
+<%= pageTitle %>
+<form action="/" method="POST">
+    <input type="text" name="value">
+    <button type="submit"> suvmit</button>
+   </form>
+
+   <ul>
+    <% data.forEach(function(test){ %>
+      <li> <span><%=  test.id %></span>
+     <span><%=  test.Company.id %></span>
+    </li>
+    <% }) %>
+  </ul>
+
+<%- include('layouts/footer') -%>

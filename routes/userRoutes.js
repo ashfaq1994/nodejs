@@ -7,10 +7,6 @@ router.
      .get(userController.getUser)
      .post(userController.createUser);
 
-router.
-     route('/user')
-     .get(userController.index)
-
 // router
 //      .route('/:id')
 //      .get(getCurrentUser)

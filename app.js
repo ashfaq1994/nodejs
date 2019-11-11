@@ -1,7 +1,8 @@
 const path = require('path')
 const express  = require('express');
 const app  = express();
-const  userRoute = require('./routes/userRoutes');
+const userRoute = require('./routes/userRoutes');
+const tripRoute = require('./routes/tripRoute');
 const models = require('./models');
 const port = 3000;
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // })
 
 app.use('/',userRoute);
+app.use('/trip',tripRoute);
 
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to this API.'
