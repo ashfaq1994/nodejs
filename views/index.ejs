@@ -90,9 +90,10 @@
                     <div class="row">
                         <div id="special-tour-container" class="container">
                             <div id="special-tour-slider" class="row">
-                               <% if (trip) { %>
-                                <%- include('card',{trip:trip}); %>
-                                <% } %>                                      
+                               <% if (trips) { %>
+                                <%- include('card',{trips:trips}); %>
+                                <% } %>  
+                                                                    
                                 <div class="special-tour-slider__item">
                                     <a href="tour-item.html"  class="trending-tour-item">
                                         <img class="trending-tour-item__thumnail" src="assets/images/uploads/tours/tour2.jpg" alt="tour1">
@@ -114,6 +115,7 @@
                                         </div>
                                     </a>
                                 </div>
+
                                 <div class="special-tour-slider__item">
                                     <a href="tour-item.html" class="trending-tour-item">
                                         <img class="trending-tour-item__thumnail" src="assets/images/uploads/tours/tour3.jpg" alt="tour1">

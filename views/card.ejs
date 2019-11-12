@@ -1,26 +1,36 @@
+<% trips.forEach(function(trip){ %>
 <div class="special-tour-slider__item">
-    <a href="tour-item.html" class="trending-tour-item">
+    <a href="<%=  trip.slug  %>" class="trending-tour-item">
         <div class="trending-tour-item__sale"></div>
         <img class="trending-tour-item__thumnail" src="assets/images/uploads/tours/tour1.jpg" alt="tour1">
         <div class="trending-tour-item__info">
             <h3 class="trending-tour-item__name">
-                India
+                <%=  trip.title %>
             </h3>
             <div class="trending-tour-item__group-infor">
                 <div class="trending-tour-item__group-infor--left">
                     <span class="trending-tour-item__group-infor__rating"></span>
                     <div class="trending-tour-item__group-infor__lasting">
-                        <img src="assets/images/tours/lasting.png" alt="lasting"> 5 Days / 4 Nights</div>
+                            <% 
+                            
+                            const date1 = trip.from_date;
+                            const date2 = trip.to_date;
+                            const diffTime = Math.abs(date2 - date1);
+                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                            
+                            %>
+                        <img src="assets/images/tours/lasting.png" alt="lasting"> <%=  diffDays %> </div>
             
                 </div>
 
                 <p class="trending-tour-item__group-infor__sale-price">$999</p>
-                <span class="trending-tour-item__group-infor__price">$799</span>
+                <span class="trending-tour-item__group-infor__price">$<%=  trip.price %></span>
                 
             </div>
             <div class="special-tour-slider__item__excerpt">
-                Morbi eleifend ornare elit, molestie tincidunt erat. Pellentesque Lorem ipsum dolor sit amet consectetur, adipisicing 
+               <%= trip.description %> 
             </div>
         </div>
     </a>
 </div>
+<% }) %>

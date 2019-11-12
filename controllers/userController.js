@@ -1,11 +1,27 @@
 const models = require('../models');
 const {Company, User, Product } = require('../models');
 
-exports.index = (req,res,next) => {
+exports.index =  async (req, res, next) => {
+  
+  try
+  {
+    const allTrip = await models.Trip.findAll();   
+
+    // res.status(200)
+    //   .json({ allTrip });
+
     res.render('index', {
       pageTitle: 'Home Page',
-      trip: 'new trip'
-    });   
+      trips : allTrip,
+    })
+  }
+  catch (error)
+  {
+    res.status(201)
+        .json({ data:  error  });
+
+  }
+ 
 };
 
 exports.createUser = async (req, res) => {

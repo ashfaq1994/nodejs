@@ -9,6 +9,11 @@ router.
 
 
 router.
+     route('/:slug')
+     // .get(tripController.destinationOne)
+     .get(tripController.show)
+
+router.
      route('/destination')
      // .get(tripController.destinationOne)
      .post(tripController.newDestination)

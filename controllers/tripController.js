@@ -1,12 +1,21 @@
 const models = require('../models');
 const slugify = require('slugify')
 
-
-
 exports.index = (req,res,next) => {
+  try
+  {
+    const allTrip = models.Trip.findAll();   
+
     res.render('create', {
-      pageTitle : 'Home Page'
-    });   
+      pageTitle: 'Home Page'   
+    })
+  }
+  catch (error)
+  {
+    res.status(201)
+        .json({ data:  error  });
+
+  }
 };
 
 
@@ -82,6 +91,30 @@ exports.newDestination = async (req,res,next) => {
   }
 }
 
+exports.show = async (req, res, next) => {
+  console.log(req.params.slug);
+  
+  try {
+    const oneTrip = await models.Trip.findOne(
+      {
+        where: {
+          slug: req.params.slug,
+        }
+    })
+  
+    // res.status(200)
+    // .json({ data : oneTravel });
+
+    res.render('single', {
+      trip:oneTrip,
+    });
+  }
+  catch (error)
+  {
+    res.status(400)
+    .json({ data : error });
+  }
+}
 
 exports.destinationIndex = async (req,res,next) =>
 {
